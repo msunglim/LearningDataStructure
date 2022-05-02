@@ -1,0 +1,125 @@
+import { Input, Button, Tooltip } from 'antd';
+import { useState } from 'react';
+import { handleKeyDown, emptyProgressList, Progress, setProgressText, setProgressPatternbm, setProgressPattern2, setProgressPatternrk } from './progress/Progress';
+
+import styles from './algorithmCSS.module.css'
+export let rabinkarp = {
+    component: <RabinKarp />,
+    description: "In computer science, the Rabin–Karp algorithm or Karp–Rabin algorithm is a string-searching algorithm created by Richard M. Karp and Michael O. Rabin that uses hashing to find an exact match of a pattern string in a text.",
+    links: ["https://www.geeksforgeeks.org/rabin-karp-algorithm-for-pattern-searching/", "https://www.tutorialspoint.com/Rabin-Karp-Algorithm"],
+
+}
+
+
+function RabinKarp() {
+    //input = t -> (add button) -> set text !
+    const [t, setT] = useState()
+    const [text, setText] = useState()
+
+    const [pattern, setPattern] = useState()
+
+
+    function setProgress(setState) {
+
+        setState()
+    }
+    function displayText() {
+        setProgressText(text)
+        setT(text)
+        setProgress(setText)
+    }
+
+    function find() {
+        //temporarily set T as ealeasealle
+        //after testing, use t for tempT, and pattern for tempP
+
+        //temporarily use the e~~lle. for text.
+     
+        let matched = false;
+        let matchedIndex = []
+        let BASE = 101
+        let currBase = 1
+        let patternHash = 0
+        let textHash = 0
+        for (let i = pattern.length - 1; i >= 0; i--) {
+            patternHash += pattern.charCodeAt(i) * currBase
+            textHash += t.charCodeAt(i) * currBase
+            currBase *= BASE
+
+        }
+        currBase /= BASE
+        setProgressPatternrk(t, pattern, t.length, t.length, false)
+        for (let i = 0; i < t.length - pattern.length; i++) {
+          
+            if (textHash === patternHash) {
+                matched = true
+                setProgressPatternrk(t, pattern, i, i+pattern.length, true)
+                for (let j = i; j < i + pattern.length; j++) {
+                    setProgressPatternrk(t, pattern, i, j, true)
+                    if (t[j] !== pattern[j - i]) {
+                        matched = false
+                        break
+                    }
+                }
+                if (matched) {
+                    matchedIndex.push(i)
+                }
+                textHash = BASE * (textHash - (t.charCodeAt(i) * currBase)) + t.charCodeAt(i + pattern.length)
+
+            } else {
+                setProgressPatternrk(t, pattern, i, i, false)
+                textHash = BASE * (textHash - (t.charCodeAt(i) * currBase)) + t.charCodeAt(i + pattern.length)
+
+            }
+        }
+
+        setProgressPattern2(t, pattern, matchedIndex)
+        setT('')
+        setPattern('')
+        setProgress(setPattern)
+    }
+
+    function clear() {
+        setT('')
+        setPattern('')
+        emptyProgressList()
+
+    }
+
+    return (
+        <div>
+
+
+            <div className={styles.methodBox}>
+
+                <div className={styles.methodElement}>
+                    <div className={styles.methodName}>Set Text / Find Pattern</div>
+                    <div className={styles.methodButton} >
+                        <Input placeholder='text' className='input' value={text} onKeyDown={e => { if (e.target.value.replaceAll(' ', '') !== '') { handleKeyDown(e, displayText, setText) } }}
+                            onChange={e => { setText(e.target.value) }} style={{ width: '75px' }} />
+                        <Button type="primary" onClick={displayText}>add</Button>
+                        <Input placeholder='pattern' className='input' value={pattern} onKeyDown={e => { if (e.target.value.replaceAll(' ', '') !== '') { handleKeyDown(e, find, setPattern) } }}
+                            onChange={e => { setPattern(e.target.value) }} style={{ width: '75px' }} />
+
+                        <Button type="primary" onClick={find}>find</Button>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <Button style={{ margin: '10px' }} type="primary" onClick={clear}>Clear</Button>
+
+            <hr />
+
+            <span style={{ fontSize: '30px', height: '120px', WebkitBoxAlign: 'center' }}>
+
+                Rabin Karp
+                <Progress />
+            </span>
+            <hr />
+
+        </div>
+    )
+}
+export default RabinKarp

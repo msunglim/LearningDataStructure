@@ -1,0 +1,131 @@
+import { Input, Button, Tooltip } from 'antd';
+import { useState } from 'react';
+import { handleKeyDown, emptyProgressList, Progress, setProgressArrayList, emptySortProcess, setProgessSort, setProgessSorting } from './progress/Progress';
+
+import styles from './algorithmCSS.module.css'
+export let cocktailsort = {
+    component: <CocktailSort />,
+    description: "Cocktail shaker sort, also known as bidirectional bubble sort, cocktail sort, shaker sort, ripple sort, shuffle sort, or shuttle sort, is an extension of bubble sort. The algorithm extends bubble sort by operating in two directions.",
+    links: ["https://www.geeksforgeeks.org/cocktail-sort/", "https://www.tutorialspoint.com/java-program-for-cocktail-sort"],
+
+}
+
+function CocktailSort() {
+    //array to be sorted
+    const [array, setArray] = useState([])
+    //state for add function
+    const [addValue, setAddValue] = useState()
+
+
+
+    function setProgress(new_arraylist, setState) {
+        setProgressArrayList(new_arraylist)
+        setArray(new_arraylist)
+        if (setState !== undefined) {
+            setState("")
+        }
+    }
+
+
+    //copy arraylist state and add input and
+    // set the copied arraylist arraylist.
+    // Finally, empty the input field.
+    function addToBack() {
+        let new_arraylist = [...array]
+        new_arraylist.push(parseInt(addValue))
+        setProgress(new_arraylist, setAddValue)
+
+    }
+
+    //clear the list
+    function clear() {
+        emptyProgressList()
+        emptySortProcess()
+        setArray([])
+    }
+    //merge sort
+    //show all the progress
+    function sort() {
+
+        setProgessSorting(array, array.length, array.length)
+        let lastSwapped;
+        do {
+            let index = lastSwapped===undefined ? 0 : lastSwapped
+            lastSwapped = undefined
+            for (let i = index; i < array.length - 1; i++) {
+
+                if (array[i] > array[i + 1]) {
+                    lastSwapped = i
+                    let copy = array[i]
+                    array[i] = array[i + 1]
+                    array[i + 1] = copy
+                }
+                setProgessSorting(array, i, i+1)
+            }
+            if (lastSwapped !== undefined) {
+                let copy = lastSwapped
+                lastSwapped = undefined;
+                for (let i = copy; i > 0; i--) {
+                  
+                    if (array[i] < array[i - 1]) {
+                        lastSwapped = i
+                        let copy = array[i]
+                        array[i] = array[i - 1]
+                        array[i - 1] = copy
+                        
+                    }
+                    setProgessSorting(array, i, i-1)
+                }
+            }
+        } while (lastSwapped !== undefined)
+
+        setProgessSorting(array, array.length, array.length)
+        setProgessSort()
+        setArray([...array])
+    }
+    return (
+        <div>
+
+
+            <div className={styles.methodBox}>
+
+                <div className={styles.methodElement}>
+                    <div className={styles.methodName}>Add To Back/Remove From Back</div>
+                    <div className={styles.methodButton} >
+                        <Input className='input' value={addValue} onKeyDown={e => { if (e.target.value.replaceAll(' ', '') !== '') { handleKeyDown(e, addToBack, setAddValue) } }}
+                            onChange={e => { setAddValue(e.target.value) }} style={{ width: '75px' }} />
+                        <Button type="primary" onClick={addToBack}>add</Button>
+                        <Button type="primary" onClick={sort}>sort</Button>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <Button style={{ margin: '10px' }} type="primary" onClick={clear}>Clear</Button>
+
+            <hr />
+
+            <span style={{ fontSize: '30px', height: '120px', WebkitBoxAlign: 'center' }}>
+
+                CocktailSort
+                <Tooltip placement="top" title=" the items in the array passed in should not
+get copied over to another data structure.">
+                    <span className={styles.bandage_positive}>in-place</span>
+                </Tooltip>
+                <Tooltip placement="top" title=" duplicates must remain in the same relative
+positions after sorting as they were before sorting.">
+                    <span className={styles.bandage_positive}>stable</span>
+                </Tooltip>
+                <Tooltip placement="top" title="the algorithm takes advantage of existing
+order in the input array.">
+                    <span className={styles.bandage_positive}>adaptive</span>
+                </Tooltip>
+                <Progress />
+            </span>
+            <hr />
+
+        </div>
+    )
+}
+export default CocktailSort

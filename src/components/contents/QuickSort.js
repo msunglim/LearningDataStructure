@@ -1,0 +1,159 @@
+import { Input, Button, Tooltip } from 'antd';
+import { useState } from 'react';
+import { handleKeyDown, emptyProgressList, Progress, setProgressArrayList, emptySortProcess, setProgessSort, setProgessSorting, setProgressQuickSort } from './progress/Progress';
+
+import styles from './algorithmCSS.module.css'
+
+export let quicksort = {
+    component: <QuickSort />,
+    description: "Quicksort is an in-place sorting algorithm. Developed by British computer scientist Tony Hoare in 1959 and published in 1961, it is still a commonly used algorithm for sorting. When implemented well, it can be somewhat faster than merge sort and about two or three times faster than heapsort. ",
+    links: ["https://www.geeksforgeeks.org/quick-sort/", "https://www.tutorialspoint.com/data_structures_algorithms/quick_sort_algorithm.htm"],
+
+}
+
+function QuickSort() {
+    //array to be sorted
+    const [array, setArray] = useState([])
+    //state for add function
+    const [addValue, setAddValue] = useState()
+
+
+
+    function setProgress(new_arraylist, setState) {
+        setProgressArrayList(new_arraylist)
+        setArray(new_arraylist)
+        if (setState !== undefined) {
+            setState("")
+        }
+    }
+
+
+    //copy arraylist state and add input and
+    // set the copied arraylist arraylist.
+    // Finally, empty the input field.
+    function addToBack() {
+        let new_arraylist = [...array]
+        new_arraylist.push(parseInt(addValue))
+        setProgress(new_arraylist, setAddValue)
+
+    }
+
+    //clear the list
+    function clear() {
+        emptyProgressList()
+        emptySortProcess()
+        setArray([])
+    }
+    //selection sort
+    //and then empty the array!
+    //show all the progress
+    function sort() {
+
+        setProgessSorting(array, array.length, array.length)
+
+        // setProgessSortingIterative(arrayCopy, i, i)
+        quicksort(array, 0, array.length)
+
+        setProgessSorting(array, array.length, array.length)
+        setProgessSort()
+        setArray([...array])
+    }
+    function quicksort(arr, a, b) {
+        if (a === b) return;
+
+        //a<= p < b
+        let p = parseInt(Math.random() * (b - a)) + a
+        let copy = arr[p]
+
+        arr[p] = arr[a]
+        arr[a] = copy
+
+
+        let sort = []
+        setProgressQuickSort(array, a, p, 0, sort)
+        let left = a + 1
+        let right = b - 1
+        p = a
+
+        while (left <= right) {
+            if (arr[p] >= arr[left]) {
+                left++
+            }
+            if (arr[p] <= arr[right]) {
+                right--
+            }
+            if (arr[p] < arr[left] && arr[p] > arr[right] && left <= right) {
+                let copy = arr[left]
+                arr[left] = arr[right]
+                arr[right] = copy
+                setProgressQuickSort(array, left, right, 1, sort)
+                left = a + 1
+                right = b - 1
+            }
+        }
+        if (left > right) {
+
+            let copy = arr[right]
+            arr[right] = arr[p]
+            arr[p] = copy
+
+            setProgressQuickSort(array, right, p, 2, sort)
+            p = right
+
+            quicksort(arr, a, p)
+            quicksort(arr, p + 1, b)
+        }
+    }
+    return (
+        <div>
+
+
+            <div className={styles.methodBox}>
+
+                <div className={styles.methodElement}>
+                    <div className={styles.methodName}>Add To Back/Remove From Back</div>
+                    <div className={styles.methodButton} >
+                        <Input className='input' value={addValue} onKeyDown={e => { if (e.target.value.replaceAll(' ', '') !== '') { handleKeyDown(e, addToBack, setAddValue) } }}
+                            onChange={e => { setAddValue(e.target.value) }} style={{ width: '75px' }} />
+                        <Button type="primary" onClick={addToBack}>add</Button>
+                        <Button type="primary" onClick={sort}>sort</Button>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <Button style={{ margin: '10px' }} type="primary" onClick={clear}>Clear</Button>
+
+            <hr />
+
+            <span style={{ fontSize: '30px', height: '120px', WebkitBoxAlign: 'center' }}>
+
+                QuickSort
+                <Tooltip placement="top" title=" the items in the array passed in should not
+get copied over to another data structure.">
+                    <span className={styles.bandage_positive}>in-place</span>
+                </Tooltip>
+                <Tooltip placement="top" title=" duplicates must not remain in the same relative
+positions after sorting as they were before sorting.">
+                    <span className={styles.bandage_negative}>unstable</span>
+                </Tooltip>
+                <Tooltip placement="top" title="the algorithm doesn't advantage of existing
+order in the input array.">
+                    <span className={styles.bandage_negative}>not adaptive</span>
+                </Tooltip>
+                <Progress />
+            </span>
+            <hr />
+
+            <ul>
+                <li><b>Purple box</b>: the element in the purple box was in a pivot index and switched with the element in the grey box. If a grey box isn't shown, the index of purple box was a pivot index. </li>
+                <li><b>Red/Blue box</b>: the element in the red box was at the 'Right pointer' and the element in the blue box was at the 'Left pointer'. Since both of 'Right' & 'Left' pointer can't move to cross, the elements in both pointers were switched.</li>
+                <li><b>Cyan box</b>: the element in the cyan box was switched with the element in grey box and now it is sorted. If a grey box isn't shown, it had been sorted before this sorting. The index of the cyan box is where 'Left' and 'Right' pointer have been crossed.</li>
+                <li><b>Green box</b>: the green box that contains arrays and arrows represents one sorting progress</li>
+           
+            </ul>
+        </div>
+    )
+}
+export default QuickSort

@@ -39,7 +39,6 @@ function Kruskal() {
             let curr = pq.remove()
             let u = curr.getU()
             let v = curr.getV()
-            
             if (ds.find(u) !== ds.find(v)) {
                 curr.setVisited(true)
                 mst.push(curr)

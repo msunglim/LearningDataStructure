@@ -10,6 +10,7 @@ import { queue } from './lib/queue';
 export let binary_search_tree = {
     component: <BinarySearchTrees />,
     description: "In computer science, a binary tree is a tree data structure in which each node has at most two children, which are referred to as the left child and the right child.",
+    description2:" BST는 노드의 왼쪽 자식들은 그 노드보다 작은 값들로 이루어져 있고, 오른쪽 자식들은 그 노드보다 큰 값들로 이루어져있다. remove시 여기서는 Predecessor를 찾아 그 자리를 대체하게 하는데, Predessor은 삭제당할 노드의 왼쪽 child의 가장 오른쪽 child를 의미한다.",
 
     links: ["https://www.geeksforgeeks.org/binary-search-tree-data-structure/", "https://www.tutorialspoint.com/data_structures_algorithms/binary_search_tree.htm"],
 

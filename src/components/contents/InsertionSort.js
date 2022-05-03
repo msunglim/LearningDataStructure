@@ -7,6 +7,7 @@ import styles from './algorithmCSS.module.css'
 export let insertionsort = {
     component: <InsertionSort />,
     description: "Insertion sort is a simple sorting algorithm that builds the final sorted array one item at a time. It is much less efficient on large lists than more advanced algorithms such as quicksort, heapsort, or merge sort.",
+    description2:"Insertion sort는 왼쪽에는 sorted array를 두고 오른쪽의 unsorted array에서 하나씩 편입시켜나가는 과정이다. index 0은 이미 sorted 되었다고 판단하고, index 1부터 편입시켜나간다. 편입시킬때 sorted array의 가장 마지막 index와 새로 편입된 element를 비교하여 순서에 맞는 위치까지 비교하여 정렬한다. 그리고 계속 오른쪽으로가면서 편입시켜준다. 빨강/파랑색은 위치가 바뀐 element들을 나타낸다. ",
 
     links: ["https://www.geeksforgeeks.org/insertion-sort/", "https://www.tutorialspoint.com/data_structures_algorithms/insertion_sort_algorithm.htm"],
 

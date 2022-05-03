@@ -8,6 +8,7 @@ export let doublylinkedlist = {
 
     component: <DoublyLinkedList />,
     description: "In computer science, a doubly linked list is a linked data structure that consists of a set of sequentially linked records called nodes. Each node contains three fields: two link fields and one data field.",
+    description2:" LinkedList는 앞뒤의 element끼리 서로의 정보를 저장하고 있다. 이것이 빛을 발하는 때는, 추가/삭제할때인데 그 이유는 그 변경되는 부분만 조정을 해주면 나머지는 영향이 없기때문이다.",
 
     links: ["https://www.geeksforgeeks.org/doubly-linked-list/", "https://www.tutorialspoint.com/data_structures_algorithms/linked_list_algorithms.htm"],
 

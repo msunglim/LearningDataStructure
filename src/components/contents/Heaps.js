@@ -7,6 +7,7 @@ import { queue } from './lib/queue';
 export let heaps = {
     component: <Heaps />,
     description: "In computer science, a heap is a specialized tree-based data structure which is essentially an almost complete tree that satisfies the heap property: in a max heap, for any given node C, if P is a parent node of C, then the key (the value) of P is greater than or equal to the key of C.",
+    description2:" Min Heap은 크기가 정해진 array의 index 0은 사용하지않고 index 1에 가장 작은값이 위치하게 한다. Remove할 때 array의 index 1값을 return하고 새로 가장 작은 값을 index 1에 위치시킨다. 이 과정에서 처음에는 array[size]의 값을 index 1에 위치시켜놓고 아래값들과 비교하여, 현재값이 아랫값보다 클 경우 아랫값과 위치를 바꾸어주고 자식이 더이상 존재하지않거나 현재값이 양쪽 자식의 값보다 작을 경우, 그대로 둔다. 사실 heap은 tree의 모양으로 나타내서 그렇지, array의 모양을 가지고 있다.",
 
     links: ["https://www.geeksforgeeks.org/heap-data-structure/", "https://www.tutorialspoint.com/data_structures_algorithms/heap_data_structure.htm"],
 
@@ -144,13 +145,13 @@ function Heaps() {
                 // }
                 let smallerChild;
                 if (right !== undefined) {
-                    smallerChild = (left.value < right.value) ? left : right
+                    smallerChild = (left.value <= right.value) ? left : right
 
                 } else {
                     smallerChild = left
                 }
-                console.log('smallest ', smallerChild.value,'curr index', index,'left', left,'right',right,'heap',heap)
-                if (smallerChild.value < curr.value) {
+                // console.log('smallest ', smallerChild.value,'curr index', index,'left', left,'right',right,'heap',heap)
+                if (smallerChild.value <= curr.value) {
                     heap[index] = smallerChild
                     let copyIndex = index
                     if (smallerChild.value === left.value) {
@@ -173,7 +174,7 @@ function Heaps() {
 
                         index = 2 * index + 1
                     }
-
+                    // console.log(index)
                     if (copyIndex / 2 >= 1) {
                         let grandparent = heap[parseInt(copyIndex / 2)]
                         if (copyIndex % 2 == 0) {
@@ -183,7 +184,6 @@ function Heaps() {
                         }
                     }
                 } else {
-                    console.log('curr index', index)
                    break;
                 }
 
@@ -218,13 +218,13 @@ function Heaps() {
         //a<b means they don't need to be switched.
         function compare(a, b) {
 
-            return (a < b) ? 1 : -1
+            return (a <= b) ? 1 : -1
         }
         function switchElement(indexCopy, arr) {
             while (indexCopy * 2 + 1 <= arrLength) {
                 let smallest2 = arr[indexCopy * 2 + 1] === undefined ?
                     arr[indexCopy * 2] :
-                    (arr[indexCopy * 2] < arr[indexCopy * 2 + 1]) ?
+                    (arr[indexCopy * 2] <= arr[indexCopy * 2 + 1]) ?
                         arr[indexCopy * 2] : arr[indexCopy * 2 + 1]
 
                 let copy = arr[indexCopy]
@@ -252,7 +252,7 @@ function Heaps() {
         while (index > 0) {
 
             let curr = arr[index]
-            smallest = arr[index * 2 + 1] === undefined ? arr[index * 2] : (arr[index * 2] < arr[index * 2 + 1]) ? arr[index * 2] : arr[index * 2 + 1]
+            smallest = arr[index * 2 + 1] === undefined ? arr[index * 2] : (arr[index * 2] <= arr[index * 2 + 1]) ? arr[index * 2] : arr[index * 2 + 1]
 
             if (compare(curr, smallest) < 0) {
                 //meaning curr is bigger than smallest. must be switched.

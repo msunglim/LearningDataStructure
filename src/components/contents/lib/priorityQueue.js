@@ -57,11 +57,11 @@ export function PriorityQueue() {
                 let right = this.array[index * 2 + 1]
 
                 if (right !== undefined) {
-                    smallerChild = (left < right) ? left : right
+                    smallerChild = (left <= right) ? left : right
                 } else {
                     smallerChild = left
                 }
-                if (smallerChild < curr) {
+                if (smallerChild <= curr) {
                     this.array[index] = smallerChild
                     let copyIndex = index
                     if (smallerChild === left) {
@@ -148,11 +148,11 @@ export function PriorityQueueDijkstra() {
                 let right = this.array[index * 2 + 1]
 
                 if (right !== undefined) {
-                    smallerChild = (left.distance < right.distance) ? left : right
+                    smallerChild = (left.distance <= right.distance) ? left : right
                 } else {
                     smallerChild = left
                 }
-                if (smallerChild.distance < curr.distance) {
+                if (smallerChild.distance <= curr.distance) {
                     this.array[index] = smallerChild
 
                     if (smallerChild.distance === left.distance) {
@@ -251,11 +251,11 @@ export function PriorityQueueKruskals(list) {
                 let right = this.array[index * 2 + 1]
 
                 if (right !== undefined) {
-                    smallerChild = (left.getWeight() < right.getWeight()) ? left : right
+                    smallerChild = (left.getWeight() <= right.getWeight()) ? left : right
                 } else {
                     smallerChild = left
                 }
-                if (smallerChild.getWeight() < curr.getWeight()) {
+                if (smallerChild.getWeight() <= curr.getWeight()) {
                     this.array[index] = smallerChild
 
                     if (smallerChild.getWeight() === left.getWeight()) {

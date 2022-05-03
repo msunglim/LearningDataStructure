@@ -6,7 +6,8 @@ import styles from './algorithmCSS.module.css'
 
 export let quicksort = {
     component: <QuickSort />,
-    description: "Quicksort is an in-place sorting algorithm. Developed by British computer scientist Tony Hoare in 1959 and published in 1961, it is still a commonly used algorithm for sorting. When implemented well, it can be somewhat faster than merge sort and about two or three times faster than heapsort. ",
+    description: "Quicksort is an in-place sorting algorithm. Developed by British computer scientist Tony Hoare in 1959 and published in 1961, it is still a commonly used algorithm for sorting. When implemented well, it can be somewhat faster than merge sort and about two or three times faster than heapsort.",
+    description2:"Quick sort는 첫번째로 아무 위치를 pivot으로 잡은뒤 그것과 index0을 바꾼다. 그리고 가장 오른쪽 index와 index 1을 pivot과 비교하여, index 1은 pivot보다 클경우 오른쪽으로 이동, 오른쪽 index는 pivot보다 작을 경우 왼쪽으로 이동시킨다. 단, 이 때 서로 더이상 움직이지 못할 상황이 되었을 경우에는 새로운 pivot을 찾고 이 과정을 반복한다. 왼쪽 index와 오른쪽 index의 값이 교차를 이루었을 경우, 빨간색 파란색 박스로 표시하고 가장 왼쪽 index와 빨간색박스안의 값을 바꾼다. 그리고 하늘색박스를 기준으로 array를 양분하여 이 과정을 element가 1개로 쪼개질 때까지 recursively 반복한다.",
     links: ["https://www.geeksforgeeks.org/quick-sort/", "https://www.tutorialspoint.com/data_structures_algorithms/quick_sort_algorithm.htm"],
 
 }

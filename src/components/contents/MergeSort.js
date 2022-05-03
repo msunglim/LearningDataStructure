@@ -7,6 +7,7 @@ import styles from './algorithmCSS.module.css'
 export let mergesort = {
     component: <MergeSort />,
     description: "In computer science, merge sort is an efficient, general-purpose, and comparison-based sorting algorithm. Most implementations produce a stable sort, which means that the order of equal elements is the same in the input and output.",
+    description2:"Merge sort는 recursively 1개남을때까지 array를 반씩 쪼갠다. 1개가 되었다면, sibling들과 합치는데, 그 때 합쳐지는 array는 작은순서대로 합친다. 그대로 더 큰 sibling들과 합치다보면 맨 마지막은 정렬된 array를 반환하게된다. ",
     links: ["https://www.geeksforgeeks.org/merge-sort/", "https://www.tutorialspoint.com/data_structures_algorithms/merge_sort_algorithm.htm"],
 
 }

@@ -7,6 +7,7 @@ import styles from './algorithmCSS.module.css'
 export let arraylist = {
     component: <ArrayList />,
     description: "The ArrayList class is a resizable array, which can be found in the java.util package.The difference between a built-in array and an ArrayList in Java, is that the size of an array cannot be modified (if you want to add or remove elements to/from an array, you have to create a new one). While elements can be added and removed from an ArrayList whenever you want.",
+    description2: "ArrayList는 크기가 정해지지않은 dynamic 배열이다. 크기가 정해져있지않아 add할 때 제약이없고 array의 특성을 모두 가지고 있어 어느 index에든 접근이 가능하다. ",
     links: ["https://www.geeksforgeeks.org/arraylist-in-java/#:~:text=ArrayList%20is%20a%20part%20of,class%20is%20found%20in%20java.", "https://www.tutorialspoint.com/java/java_arraylist_class.htm"]
 }
 
@@ -118,11 +119,11 @@ function ArrayList() {
     // set the copied arraylist arraylist.
     // Finally, empty the input field.
     function removeFromBack() {
-        if(arraylist.length != 0){
-        let new_arraylist = [...arraylist]
-        new_arraylist.pop()
-        setProgress(new_arraylist)
-    }
+        if (arraylist.length != 0) {
+            let new_arraylist = [...arraylist]
+            new_arraylist.pop()
+            setProgress(new_arraylist)
+        }
     }
 
     //clear the list

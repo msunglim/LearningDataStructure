@@ -11,6 +11,7 @@ import { Stack } from './lib/stack';
 export let dfs = {
     component: <DFS />,
     description: "Depth-first search is an algorithm for traversing or searching tree or graph data structures. The algorithm starts at the root node and explores as far as possible along each branch before backtracking. ",
+    description2:"DFS는 시작 vertex와 그 이웃 vertex를 stack 안에 넣는다. stack에 넣었으면 그 넣은 vertex를 방문하고 stack에서 제거한다음 그 이웃을 찾는다. 이것을 recursively 수행하고 다 찾았으면 다시 원래지점의 이웃을 stack에 넣고 앞의 과정을 반복한다.  ",
 
     links: ["https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/", "https://www.tutorialspoint.com/data_structures_algorithms/depth_first_traversal.htm"],
 

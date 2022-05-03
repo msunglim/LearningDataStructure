@@ -88,3 +88,47 @@
     border: 1px solid black;
     width: 130px;
 }
+.content {
+   
+    width: 100%;
+    height: 100%;
+}
+.sider {
+    width: 100%;
+    height: 100%;
+    max-width: 200px;
+    min-width: 0px;
+    flex:content;
+}
+@media (max-width:800px){
+    .content{
+        width: 50%;
+    }
+    .sider{
+        width: 50%;
+    }
+    .methodBox {
+        width: max-content;
+        border: black 1px solid;
+        text-align: center;
+        background: white;
+        display: grid;
+    }
+}
+@media (max-width:580px){
+    .content{
+        width: 100%;
+    }
+    .sider{
+        width: 0%;
+    }
+    .methodBox {
+        width: max-content;
+        border: black 1px solid;
+        text-align: center;
+        background: white;
+        display: grid;
+    }
+}
+
+

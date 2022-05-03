@@ -7,6 +7,7 @@ import styles from './algorithmCSS.module.css'
 export let deques = {
     component: <Deques />,
     description: "In computer science, a double-ended queue is an abstract data type that generalizes a queue, for which elements can be added to or removed from either the front or back. It is also often called a head-tail linked list, though properly this refers to a specific data structure implementation of a deque.",
+    description2:" Deque는 Front와 Rear을 가지고 있다. 오로지 그것이 가르키고 있는 지점에만 추가/삭제할 수 있는데, 그 위치는 mod 계산을 통해 정해진다. 단, add는 크기가 정해진 array안에서 이루어지기 때문에, 용량이 초과되면 array 사이즈를 2배로 늘려준 뒤 Front->Rear순으로 추가 한다. Front/Rear을 삭제할 때 그 위치의 조정이 있을 수 있다.",
 
     links: ["https://www.geeksforgeeks.org/deque-set-1-introduction-applications/", "https://www.tutorialspoint.com/deque-in-java#:~:text=The%20dequeue%20is%20a%20double,a%20subtype%20of%20the%20java."],
 

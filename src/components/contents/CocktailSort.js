@@ -6,6 +6,7 @@ import styles from './algorithmCSS.module.css'
 export let cocktailsort = {
     component: <CocktailSort />,
     description: "Cocktail shaker sort, also known as bidirectional bubble sort, cocktail sort, shaker sort, ripple sort, shuffle sort, or shuttle sort, is an extension of bubble sort. The algorithm extends bubble sort by operating in two directions.",
+    description2:"Cocktail Sort는 정직하다. 시작index i와 그 옆 index j의 값을 비교한다. 비교해서 왼쪽값이 오른쪽 값보다 클 경우 서로 위치를 바꾸고 i++, j++해준다. 그리고 끝까지가면 이번엔 i--, j--를 해주고 왼쪽끝까지 서치/비교/교체해준다. 단, 이 과정에서 양끝은 이미 sort 되었을 것이므로, 다음 서치때는 제외한다. 추가적으로 마지막 비교때 바꾸지않았다면 거기까지도 sorted된 영역으로 인정한다.",
     links: ["https://www.geeksforgeeks.org/cocktail-sort/", "https://www.tutorialspoint.com/java-program-for-cocktail-sort"],
 
 }

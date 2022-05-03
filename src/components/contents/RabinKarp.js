@@ -5,7 +5,8 @@ import { handleKeyDown, emptyProgressList, Progress, setProgressText, setProgres
 import styles from './algorithmCSS.module.css'
 export let rabinkarp = {
     component: <RabinKarp />,
-    description: "In computer science, the Rabin–Karp algorithm or Karp–Rabin algorithm is a string-searching algorithm created by Richard M. Karp and Michael O. Rabin that uses hashing to find an exact match of a pattern string in a text.",
+    description: "In computer science, the Rabin–Karp algorithm or Karp–Rabin algorithm is a string-searching algorithm created by Richard M. Karp and Michael O. Rabin that uses hashing to find an exact match of a pattern string in a text. ",
+    description2:"Rabin Karp는 pattern의 hash를 미리 구해두고 pattern의 크기만큼 text에서 처음부분의 hash를 구한다. 서로 같을 경우, 글자하나하나 대조해본다. 다를 경우, text에서 한칸 더 뒤의 같은 크기의 부분의 hash를 구한뒤 다음 비교때 같이 비교해준다. ",
     links: ["https://www.geeksforgeeks.org/rabin-karp-algorithm-for-pattern-searching/", "https://www.tutorialspoint.com/Rabin-Karp-Algorithm"],
 
 }
@@ -53,9 +54,9 @@ function RabinKarp() {
           
             if (textHash === patternHash) {
                 matched = true
-                setProgressPatternrk(t, pattern, i, i+pattern.length, true)
+                setProgressPatternrk(t, pattern, i, i+pattern.length, true, textHash, patternHash)
                 for (let j = i; j < i + pattern.length; j++) {
-                    setProgressPatternrk(t, pattern, i, j, true)
+                    setProgressPatternrk(t, pattern, i, j, true, textHash, patternHash)
                     if (t[j] !== pattern[j - i]) {
                         matched = false
                         break
@@ -67,7 +68,7 @@ function RabinKarp() {
                 textHash = BASE * (textHash - (t.charCodeAt(i) * currBase)) + t.charCodeAt(i + pattern.length)
 
             } else {
-                setProgressPatternrk(t, pattern, i, i, false)
+                setProgressPatternrk(t, pattern, i, i, false, textHash, patternHash)
                 textHash = BASE * (textHash - (t.charCodeAt(i) * currBase)) + t.charCodeAt(i + pattern.length)
 
             }

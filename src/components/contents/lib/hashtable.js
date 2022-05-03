@@ -12,12 +12,12 @@ export function HashTable() {
         //         return;
         //     }
         // }
-        if (!(isNaN(parseInt(key)) || typeof(key)==='object' )) {
-            this.array[key] = obj
+       
+        if (typeof(key)==='string' || typeof(key)==='number') {
+            this.array[key] = value
         } else {
             let index = key.getValue()
             this.array[index] = obj
-            
         }
         this.size++
         // this.array.push(obj)
@@ -31,11 +31,11 @@ export function HashTable() {
         //         return value
         //     }
         // }
-        if (!(isNaN(parseInt(key)) || typeof(key)==='object' )) {
+        if (typeof(key)==='string' || typeof(key)==='number') {
             if (this.array[key] === undefined) {
                 return -1
             } else {
-                return this.array[key].value
+                return this.array[key]
             }
         } else {
             let index = key.getValue()
@@ -45,7 +45,6 @@ export function HashTable() {
                 return this.array[index].value
             }
         }
-
         // return -1
     }
     //return where the key is. if not exist, return -1
@@ -58,12 +57,16 @@ export function HashTable() {
         //     }
         // }
         // return index
-        if (!(isNaN(parseInt(key)) || typeof(key)==='object' )) {
-            if (this.array[key] === undefined) {
-                return -1
-            } else {
-                return this.array[key].key
+        if (typeof(key)==='string' || typeof(key)==='number') {
+            let lt = Object.entries(this.array)
+            let ret = -1
+            for(let i = 0 ; i < lt.length; i++){
+                if(lt[i][0] === key){
+                    ret = i
+                    return ret
+                }
             }
+            return ret
         } else {
             let index = key.getValue()
             if (this.array[index] === undefined) {

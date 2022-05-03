@@ -28,7 +28,7 @@ function WelcomeContent() {
     return (
 
         <div>
-            <Link to="/a">저리가</Link>
+          
             <Title>
                 자료구조의 기본기들을 배워봅시다.
 

@@ -6,7 +6,8 @@ import styles from './algorithmCSS.module.css'
 
 export let selectionsort = {
     component: <SelectionSort />,
-    description: "In computer science, selection sort is an in-place comparison sorting algorithm. It has an O(n²) time complexity, which makes it inefficient on large lists, and generally performs worse than the similar insertion sort. ",
+    description: "In computer science, selection sort is an in-place comparison sorting algorithm. It has an O(n²) time complexity, which makes it inefficient on large lists, and generally performs worse than the similar insertion sort.",
+    description2:" Selection sort의 과정을 서술하겠다. 1. array를 훑어서 가장 작은값을 index 0에 두고 원래 걔가 있던 자리에는 index 0에 있었던 값을 넣어준다. 2. 거기+1과 거기+2를 비교하고 거기+1의 값이 거기+2의 값보다 크다면 서로 위치를 바꾸고, 그렇지않다면 그럴때까지 계속 오른쪽으로 전진한다. 3. 그리고 빨간색비교칸을 한칸씩 우측으로 이동하고 파란색은 항상 빨간색 바로 오른쪽에서 끝까지 서치한다. ",
 
     links: ["https://www.geeksforgeeks.org/selection-sort/", "https://www.tutorialspoint.com/data_structures_algorithms/selection_sort_algorithm.htm"],
 
@@ -48,6 +49,7 @@ function SelectionSort() {
     //selection sort
     //show all the progress
     function sort() {
+        
         let arrayCopy = array
         setProgessSorting(arrayCopy, array.length, array.length)
         for (let i = 0; i < arrayCopy.length; i++) {
@@ -75,6 +77,7 @@ function SelectionSort() {
         }
         setProgessSorting(arrayCopy, array.length, array.length)
         // setProgessSort()
+        setProgessSort()
         setArray([...arrayCopy])
     }
     return (

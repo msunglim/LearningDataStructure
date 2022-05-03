@@ -7,7 +7,7 @@ import { queue } from './lib/queue';
 export let avls = {
     component: <AVLs />,
     description: "AVL trees are binary search trees in which the difference between the left and right subtrees of any node is less than or equal to one. Adelson, Velskii, and Landi developed the technique of balancing binary trees' height, which is why it is called an AVL tree or a balanced binary tree.",
-
+    description2:" AVL은 BST와 마찬가지로 모든 노드의 왼쪽 자식들은 그 노드보다 작고 오른쪽 자식들은 그 노드보다 크다. 추가적으로 Balance factor와 height가 있는데, height는 노드의 자식 중 가장 높은 height값을 가진 자식의 height + 1이고 balance facotr은 왼쪽.height - 오른쪽.height이다. 이 값이 2또는 -2로 되었을 경우, tree가 불균형하다는 뜻으로, 새롭게 균형을 맞춰준다. 이 때, 특정 자식의 balance factor가 1 또는 -1일 경우, left-right rotation 또는 right-left rotation을 할 수도 있다. 자식이 undefine일 경우 height값은 -1로 한다.",
     links: ["https://www.geeksforgeeks.org/avl-tree-set-1-insertion/", "https://www.tutorialspoint.com/data_structures_algorithms/avl_tree_algorithm.htm"],
 
 }

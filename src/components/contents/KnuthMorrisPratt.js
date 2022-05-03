@@ -7,6 +7,7 @@ import styles from './algorithmCSS.module.css'
 export let kmp = {
     component: <KnuthMorrisPratt />,
     description: "In computer science, the Knuth–Morris–Pratt string-searching algorithm (or KMP algorithm) searches for occurrences of a \"word\" W within a main \"text string\" S by employing the observation that when a mismatch occurs, the word itself embodies sufficient information to determine where the next match could begin, thus bypassing re-examination of previously matched characters.",
+    description2:"KMP는 pattern의 failure table을 만들고 시작한다. text의 좌측부터 비교를 시작해서 전부 일치하였을 경우, 다음 index에 현재index의 failure table의 값을 index로 가지는 pattern이 오도록 오른쪽으로 shift한다. 불일치가 일어났을 경우에는 현재 index에 failture table의 값을 index로 가지는 pattern을 오도록 위해 오른쪽으로 shift한다. 처음부터 불일치일경우 그냥 오른쪽으로 1칸이동한다." ,
     links: ["https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/", "https://www.tutorialspoint.com/Knuth-Morris-Pratt-Algorithm"],
 
 }
@@ -65,9 +66,9 @@ function KnuthMorrisPratt() {
                 if (i - shift === 0) {
                     setProgressPatternkmp(t, pattern, ft, shift, i)
                     shift = i + 1
-                    if(shift+pattern.length > t.length){
-                        break;
-                    }
+                    // if(shift+pattern.length > t.length){
+                    //     break;
+                    // }
                 } else {
                     setProgressPatternkmp(t, pattern, ft, shift, i, false)
                     let target = ft[i - shift - 1]
@@ -76,9 +77,9 @@ function KnuthMorrisPratt() {
                     //target: how many elements are already equal. so that we can move forward by target.
                     // -1: because i will be increased by one 
                     i = shift + target - 1
-                    if(shift+pattern.length > t.length){
-                        break;
-                    }
+                    // if(shift+pattern.length > t.length){
+                    //     break;
+                    // }
                 }
             } else {
                 setProgressPatternkmp(t, pattern, ft, shift, i)
@@ -88,7 +89,12 @@ function KnuthMorrisPratt() {
                     let target = ft[i - shift]
                     shift += ft.length - ft[i - shift]
                     i = shift - 1 + target
+
+                   
                 }
+            }
+            if(shift+pattern.length > t.length){
+                break;
             }
 
         }

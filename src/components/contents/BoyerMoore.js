@@ -7,7 +7,8 @@ import { HashTable } from './lib/hashtable';
 
 export let boyermoore = {
     component: <BoyerMoore />,
-    description: "In computer science, the Boyer–Moore string-search algorithm is an efficient string-searching algorithm that is the standard benchmark for practical string-search literature. It was developed by Robert S. Boyer and J Strother Moore in 1977",
+    description: "In computer science, the Boyer–Moore string-search algorithm is an efficient string-searching algorithm that is the standard benchmark for practical string-search literature. It was developed by Robert S. Boyer and J Strother Moore in 1977. ",
+    description2:"BM은 pattern의 last table을 먼저 만든다. 그리고 pattern과 text를 비교하는데, pattern의 후미부터 비교한다. 만약 현재 보고 있는 text의 값이, last table에 있을 경우, 현재 index에 last table을 index로 가지는 pattern의 값이 오도록 pattern을 오른쪽으로 shift한다. 왼쪽으로 갈경우에는 오른쪽으로 1칸 shift한다. 전체가 맞았을 경우 오른쪽으로 1칸 shift한다. 만약 없었을 경우, pattern의 크기만큼 오른쪽으로 shift한다.",
     links: ["https://www.geeksforgeeks.org/boyer-moore-algorithm-for-pattern-searching/", "https://www.tutorialspoint.com/automata_theory/moore_and_mealy_machines.htm"],
 
 }
@@ -42,9 +43,8 @@ function BoyerMoore() {
         //after testing, use t for tempT, and pattern for tempP
 
         //temporarily use the e~~lle. for text.
-
-
-        let lt = findLastTable(pattern)
+        let lastTable = findLastTable(pattern)
+        let lt = Object.entries(lastTable.array)
         let shift = 0
         let matched = false;
         let matchedIndex = []
@@ -53,7 +53,7 @@ function BoyerMoore() {
         while (curr >= 0 && curr + shift < t.length) {
             let char = t.charAt(shift + curr)
             //looked element in last table. = current character of text.
-            let index = lt.getIndexOfKey(char)
+            let index = lastTable.getIndexOfKey(char)
             setProgressPatternbm(t, pattern, lt, shift, shift + curr, false, index)
             if (char !== pattern.charAt(curr)) {
                 matched = false
@@ -62,7 +62,7 @@ function BoyerMoore() {
 
                 } else {
                     //current character does exist in the table. 
-                    let lt_val = lt.getValue(char)
+                    let lt_val = lastTable.getValue(char)
                     if (curr - lt_val < 0) {
                         shift++;
                     } else {

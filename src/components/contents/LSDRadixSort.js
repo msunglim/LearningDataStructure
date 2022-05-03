@@ -7,6 +7,7 @@ import { Queue } from './lib/queue';
 export let lsdradixsort = {
     component: <LSDRadixSort />,
     description: "In computer science, radix sort is a non-comparative sorting algorithm. It avoids comparison by creating and distributing elements into buckets according to their radix.",
+    description2:"Radix Sort는 element끼리 비교하여 sort하지 않고, 자릿수를 0~9까지의 양동이 queue에 담아 들어간 순대로 다시 array를 만들고, 한단계 더 높은 자릿수를 0~9까지의 양동이 queue에 담고 재배열하는 작업을 element 중 가장 높은 자릿수만큼 반복한다.",
     links: ["https://www.geeksforgeeks.org/radix-sort/", "https://www.tutorialspoint.com/c-program-for-radix-sort"],
 
 }

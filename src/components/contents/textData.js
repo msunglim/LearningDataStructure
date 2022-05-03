@@ -435,12 +435,6 @@ export let table = {
                 name: 'clear',
                 bigO: 'O(1)',
                 description: ' Clears the tree.',
-            },
-            {
-                key: '11',
-                name: 'findPathBetween',
-                bigO: 'O(log n) for a balanced tree and O(n) for worst case',
-                description: 'Finds the path between two elements in the tree, specifically the path from data1 to data2, inclusive of both.',
             }
         ],
         // Heaps

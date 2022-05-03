@@ -198,7 +198,7 @@ export function setProgressPattern2(text, pattern, matched) {
 }
 //shift: curr starting index such i and j
 //curr : end of pattern (i + pattern.length)
-export function setProgressPatternrk(text, pattern, shift, curr, allMatched) {
+export function setProgressPatternrk(text, pattern, shift, curr, allMatched, textHash, patternHash) {
     let element = []
 
     for (let i = 0; i < text.length; i++) {
@@ -212,27 +212,44 @@ export function setProgressPatternrk(text, pattern, shift, curr, allMatched) {
                     <element className={styles.element}>{i}</element>
                 }
                 {i === shift &&
-                    <element style={{ background: 'yellow' }} className={styles.element}>{textElement}</element>
+                    <element style={{ background: 'yellow' }} className={styles.element}>
+                        {textElement}</element>
                 }
                 {i !== shift &&
                     <element className={styles.element}>{textElement}</element>
                 }
                 {(allMatched && i >= shift && i <= curr) &&
-                    <element style={{ background: 'springgreen' }} className={styles.element}>{pattern.charAt(i - shift)}</element>
+                    <element style={{ background: 'springgreen' }} className={styles.element}>
+                        {pattern.charAt(i - shift)}</element>
                 }
                 {(allMatched && (i < shift || i > curr)) &&
-                    <element style={{ background: 'red' }} className={styles.element}>{pattern.charAt(i - shift)}</element>
+                    <element style={{ background: 'red' }} className={styles.element}>
+                        {pattern.charAt(i - shift)}</element>
                 }
                 {(i === shift && !allMatched) &&
-                    <element style={{ background: 'yellow' }} className={styles.element}>{pattern.charAt(i - shift)}</element>
+                    <element style={{ background: 'yellow' }} className={styles.element}>
+                        {pattern.charAt(i - shift)}</element>
                 }
                 {(i !== shift && !allMatched) &&
-                    <element className={styles.element}>{pattern.charAt(i - shift)}</element>
+                    <element className={styles.element}>
+                        {pattern.charAt(i - shift)}</element>
+                }
+                {i === shift && textHash !== undefined &&
+                    <div style={{fontSize:'small', width:'maxContent'}}>
+                        {textHash}
+                        <hr/>
+                    </div>
+                }
+                {i === shift && textHash !== undefined &&
+                    <div style={{fontSize:'small', width:'maxContent'}}>
+                        {patternHash}
+                    </div>
                 }
 
             </container>
         )
     }
+
     progressList.push(element)
 }
 
@@ -276,34 +293,36 @@ export function setProgressPatternbm(text, pattern, lt, shift, curr, allMatched,
                 {((i < curr || i >= shift + pattern.length) && allMatched === false) &&
                     <element className={styles.element}>{pattern.charAt(i - shift)}</element>
                 }
-
-                {(ltIndex !== -1 && i - shift === ltIndex && lt.array[i - shift] !== undefined) &&
-                    <element style={{ background: 'yellow' }} className={styles.element}>{lt.array[i - shift].key}</element>
-                }
-                {(ltIndex !== -1 && i - shift !== ltIndex && lt.array[i - shift] !== undefined) &&
-                    <element className={styles.element}>{lt.array[i - shift].key}</element>
-                }
-                {ltIndex === -1 && i < shift + pattern.length - 1 && lt.array[i - shift] !== undefined &&
-                    <element className={styles.element}>{lt.array[i - shift].key}</element>
-                }
-                {ltIndex === -1 && i === shift + pattern.length - 1 && lt.array[i - shift] !== undefined &&
-                    <element style={{ background: 'yellow' }} className={styles.element}>{lt.array[lt.array.length - 1].key}</element>
+                {(i == shift + pattern.length && pattern.length + 1 === lt.length) &&
+                    <element className={styles.element}>_</element>
                 }
 
 
+                {(ltIndex !== -1 && i - shift === ltIndex && lt[i - shift] !== undefined) &&
+                    <element style={{ background: 'yellow' }} className={styles.element}>{lt[i - shift][0]}</element>
+                }
+                {(ltIndex !== -1 && i - shift !== ltIndex && lt[i - shift] !== undefined) &&
+                    <element className={styles.element}>{lt[i - shift][0]}</element>
+                }
+                {ltIndex === -1 && i < shift + pattern.length && lt[i - shift] !== undefined &&
+                    <element className={styles.element}>{lt[i - shift][0]}</element>
+                }
+                {ltIndex === -1 && i === shift + pattern.length && lt[i - shift] !== undefined &&
+                    <element style={{ background: 'yellow' }} className={styles.element}>{lt[lt.length - 1][0]}</element>
+                }
 
 
-                {(ltIndex !== -1 && i - shift === ltIndex && lt.array[i - shift] !== undefined) &&
-                    <element style={{ background: 'yellow' }} className={styles.element}>{lt.array[i - shift].value}</element>
+                {(ltIndex !== -1 && i - shift === ltIndex && lt[i - shift] !== undefined) &&
+                    <element style={{ background: 'yellow' }} className={styles.element}>{lt[i - shift][1]}</element>
                 }
-                {(ltIndex !== -1 && i - shift !== ltIndex && lt.array[i - shift] !== undefined) &&
-                    <element className={styles.element}>{lt.array[i - shift].value}</element>
+                {(ltIndex !== -1 && i - shift !== ltIndex && lt[i - shift] !== undefined) &&
+                    <element className={styles.element}>{lt[i - shift][1]}</element>
                 }
-                {ltIndex === -1 && i < shift + pattern.length - 1 && lt.array[i - shift] !== undefined &&
-                    <element className={styles.element}>{lt.array[i - shift].key}</element>
+                {ltIndex === -1 && i < shift + pattern.length && lt[i - shift] !== undefined &&
+                    <element className={styles.element}>{lt[i - shift][1]}</element>
                 }
-                {ltIndex === -1 && i === shift + pattern.length - 1 && lt.array[i - shift] !== undefined &&
-                    <element style={{ background: 'yellow' }} className={styles.element}>{lt.array[lt.array.length - 1].value}</element>
+                {ltIndex === -1 && i === shift + pattern.length && lt[i - shift] !== undefined &&
+                    <element style={{ background: 'yellow' }} className={styles.element}>{lt[lt.length - 1][1]}</element>
                 }
 
 

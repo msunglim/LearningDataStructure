@@ -11,7 +11,8 @@ import { vertexDistance } from './lib/vertexDistance';
 import { HashTable } from './lib/hashtable';
 export let dijkstra = {
     component: <Dijkstra />,
-    description: "Dijkstra's algorithm (/ˈdaɪkstrəz/ DYKE-strəz) is an algorithm for finding the shortest paths between nodes in a graph, which may represent, for example, road networks. It was conceived by computer scientist Edsger W. Dijkstra in 1956 and published three years later.",
+    description: "Dijkstra's algorithm (/ˈdaɪkstrəz/ DYKE-strəz) is an algorithm for finding the shortest paths between nodes in a graph, which may represent, for example, road networks. It was conceived by computer scientist Edsger W. Dijkstra in 1956 and published three years later. ",
+    description2:"Dijkstra는 distance map과 priority queue를 사용한다. distance map에는 모든 vertex와의 거리를 무한대로 둔다. 시작 vertex가 정해지면 그것을 priority queue에 넣는다. 그리고 distance map에서 해당 vertex까지의 거리는 0으로둔다. priority queue에 현재 vertex의 이웃들을 모두넣고 distance map에 있는 현재 vertex까지의 거리 + 이웃까지의 거리를 distance map에 있는 이웃 vertex의 distance로 설정해준다. priority queue에선 거리가 작은 순대로 pop하여 이 과정을 priority queue가 모두 소진되거나 모든 vertex를 방문할 때까지 반복한다.",
 
     links: ["https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/", "https://www.tutorialspoint.com/dijkstra-s-algorithm-to-compute-the-shortest-path-through-a-graph"],
 
@@ -36,7 +37,7 @@ function Dijkstra() {
             distanceMap.add(vlist[i], Number.POSITIVE_INFINITY)
         }
         let pq = new PriorityQueueDijkstra()
-        console.log('what is dm', distanceMap)
+        // console.log('what is dm', distanceMap)
         setProgressDijkstra(drawGraph(vlist, elist, adjlist, true,), pq, distanceMap)
         
         let visited = new HashTable()

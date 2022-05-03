@@ -50,12 +50,18 @@ function Algorithms() {
                 <Lab index={index} />
 
                 <Divider style={{ fontSize: '30px', borderTopColor: 'darkslategray' }} orientation="left" orientationMargin="0">
-                    {title}
+                    Definition of {title}
                 </Divider>
                 <Paragraph>
                     {algorithms[index].description}
                 </Paragraph>
 
+                <Divider style={{ fontSize: '30px', borderTopColor: 'darkslategray' }} orientation="left" orientationMargin="0">
+                    How {title} works
+                </Divider>
+                <Paragraph>
+                    {algorithms[index].description2}
+                </Paragraph>
 
                 <Title level={2}>Methods in {title}</Title>
                 <Table pagination={false} dataSource={table.datasource[index]} columns={table.col} />

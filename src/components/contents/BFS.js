@@ -10,6 +10,7 @@ import { drawGraph, getGraph, Graph_direct, refreshGraph } from './lib/graph';
 export let bfs = {
     component: <BFS />,
     description: "Breadth-first search is an algorithm for searching a tree data structure for a node that satisfies a given property. It starts at the tree root and explores all nodes at the present depth prior to moving on to the nodes at the next depth level. ",
+    description2:"BFS는 시작 vertex의 이웃들을 Queue에 넣고 Queue가 다 소진될때까지 pop하면서 계속 이웃을 찾는다. 방문한 순서는 queue에 들어간 순이다.  ",
     links: ["https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/", "https://www.tutorialspoint.com/data_structures_algorithms/breadth_first_traversal.htm"],
 
 }

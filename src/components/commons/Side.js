@@ -4,7 +4,7 @@ import { Typography } from 'antd';
 import "antd/dist/antd.css";
 import { Link, BrowserRouter } from "react-router-dom";
 import { useState } from 'react';
-
+import styles from '../contents/algorithmCSS.module.css'
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 
@@ -69,8 +69,8 @@ function Side() {
 
 
     return (
-        <Sider width={200} className="site-layout-background">
-            <SideMenu/>
+        <Sider width={200} className={styles.sider}  >
+            <SideMenu />
           
 
         </Sider >

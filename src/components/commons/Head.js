@@ -11,7 +11,7 @@ function Head() {
         <Header className="header">
             <div style={{ color: 'white', fontSize: 'large', fontWeight: 'bold' }}>
                
-                    <Link to="" >Datastructures</Link>
+                    <Link to="/LearningDataStructure" >Datastructures</Link>
                 
             </div>
         </Header>

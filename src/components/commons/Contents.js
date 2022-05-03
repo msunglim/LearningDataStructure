@@ -21,7 +21,7 @@ function Contents() {
                 }}
             >
                 <Routes>
-                    <Route path="/" element={<WelcomeContent />} />
+                    <Route path="/LearningDataStructure" element={<WelcomeContent />} />
                     <Route path="/:title" element={<Algorithms/>}/>
                     
 

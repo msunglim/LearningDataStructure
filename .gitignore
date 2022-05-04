@@ -4,7 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
-/src/components/contents/
+/src/components/contents/*.js
+/src/components/contents/lib/
 !/src/components/contents/progress
 !/src/components/contents/sections
 !/src/components/contents/Algorithms.js

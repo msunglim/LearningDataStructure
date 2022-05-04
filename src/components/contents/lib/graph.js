@@ -15,8 +15,8 @@ export function getGraph() {
 //curr: currently visited vertex
 //neighbor: curr's neighbor connected by an edge.
 function Vertex(vertex_arr , vlist, curr ,neighbor){
-    let xList = [125, 375, 62, 250, 438]
-    let yList = [100, 200, 300, 400, 500]
+    let xList = [75, 225, 34, 150, 260]
+    let yList = [60, 120, 180, 240, 300]
     let x_curr = 0
     let y_curr = 0
     let layer = 0
@@ -27,7 +27,7 @@ function Vertex(vertex_arr , vlist, curr ,neighbor){
         let fill = (vlist[i].getVisited()) ? 'green' : (stroke === 'purple') ? 'red' : ((stroke === 'grey') ? 'aliceblue' : 'pink')
         vertex_arr.push(
             <Svg>
-                <Circle stroke={stroke} strokeWidth={strokeWidth} cx={xList[x_curr % 5]} cy={yList[y_curr]} r="25" fill={fill} />
+                <Circle stroke={stroke} strokeWidth={strokeWidth} cx={xList[x_curr % 5]} cy={yList[y_curr]} r="15" fill={fill} />
                 <Text>
                     <TSpan
                         fontSize="20"
@@ -117,13 +117,13 @@ export function drawGraph(vlist, elist, adjlist, isDirected, curr, neighbor) {
    
     return (
 
-        <Svg height='500' width='500'>
+        <Svg height='300' width='300'>
             {/* background */}
             <Rect
                 x="0"
                 y="0"
-                width="500"
-                height="500"
+                width="300"
+                height="300"
                 fill="rgb(235,235,235)"
                 strokeWidth="3"
                 stroke="rgb(0,0,0)"

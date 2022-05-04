@@ -18,10 +18,11 @@ function Contents() {
                     padding: 24,
                     margin: 0,
                     minHeight: 280,
+                    display:'block'
                 }}
             >
                 <Routes>
-                    <Route path="/LearningDataStructure" element={<WelcomeContent />} />
+                    <Route path="/" element={<WelcomeContent />} />
                     <Route path="/:title" element={<Algorithms/>}/>
                     
 

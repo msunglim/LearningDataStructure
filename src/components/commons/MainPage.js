@@ -6,18 +6,14 @@ import Contents from "./Contents"
 import { BrowserRouter } from 'react-router-dom';
 import { useWindowDimensions } from 'react-native';
 
-
-
-
 function MainPage() {
     const { height, width } = useWindowDimensions();
     return (
         <BrowserRouter>
-            <Layout>
-
+            <Layout >
                 <Head />
-                <Layout>
-                    {width > 500 &&
+                <Layout style={{display:'-webkit-box'}}>
+                    {width > 760 &&
                         <Side />
                     }
                     <Contents />

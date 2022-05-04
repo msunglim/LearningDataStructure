@@ -16,7 +16,7 @@ function Head() {
                 {width <= 760 &&
                     <Side />
                 }
-                <Link to="" className={styles.link} >Datastructures</Link>
+                <Link to="/LearningDataStructure" className={styles.link} >Datastructures</Link>
 
 
             </div>

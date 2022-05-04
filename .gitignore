@@ -4,6 +4,12 @@
 /node_modules
 /.pnp
 .pnp.js
+/src/components/contents
+!/src/components/contents/progress
+!/src/components/contents/sections
+!/src/components/contents/Algorithms.js
+!/src/components/contents/algorithmsManager.js
+!/src/components/contents/textData.js
 
 # testing
 /coverage

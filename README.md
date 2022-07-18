@@ -8,27 +8,40 @@ The goal of this project is to visualize the process of algorithms step by step.
 I believe it is better to see how an algorithm works rather than just memorizing the logic. 
 
 The website contains arrays, trees, sorting, and pattern matching,and graph algorithms.
-Arrays------------------------------------
+Arrays
+
 ArrayList
 DoublyLinkedList
 Deques
 HashMaps
-Trees-------------------------------------
+
+
+Trees
+
 BinaryTrees
 Heaps
 AVLs
-Sorting-----------------------------------
+
+
+Sorting
+
 Selection Sort
 Insertion Sort
 Cocktail Sort
 Merge Sort
 Quick Sort
 LSD Radix Sort
-Pattern Matching--------------------------
+
+
+Pattern Matching
+
 Knuth-Morris-Pratt
 Boyer-Moore
 Rabin-Karp
-Graph Algorithms--------------------------
+
+
+Graph Algorithms
+
 BFS
 DFS
 Dijkstra's

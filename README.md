@@ -8,6 +8,7 @@ The goal of this project is to visualize the process of algorithms step by step.
 I believe it is better to see how an algorithm works rather than just memorizing the logic. 
 
 The website contains arrays, trees, sorting, and pattern matching,and graph algorithms.
+
 Arrays
 
 ArrayList

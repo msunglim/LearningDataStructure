@@ -1,0 +1,343 @@
+1. 기본세팅
+
+폴더하나 만들어놓지말고! 폴더의 부모폴더에서 터미널을 시작한뒤, ㄱ을 실행하고 그 폴더안으로 cd해서 들어가서 ㄴ을 실행하라.
+ㄱ. npx create-react-app projectName   이러면 뭐가 주루룩생성됨
+ㄴ. npm run start로 실행해보자. 개가튼 애러가 뜬다면 이런걸 해보자,, npm i web-vitals --save-dev
+
+노드몬은 Nodejs와 연계해야한다고한다.. 리액트만 돌리는건안되나봄.. 할필요가없는게 코드를 vscode에서 저장하기만하면 (컴파일) 바로 새로고침되서 웹사이트에 적용이됨.
+
+2. datastructure 종류
+ArrayList
+DoublyLinkedList
+Deques
+BinarySearchTrees
+Heaps
+HashMaps
+AVLs
+SortingAlgorithms
+PatternMatching
+GraphAlgorithms
+
+3. 알고리즘 러닝페이지
+일단 뭐하나 만들기전에 리뷰한번하고 만들자.
+1.정의
+2.대표기능들: insert, delete, search, update
+3. 과정을 보여주기. 그것은 그림판에 그려져있다.가로로 스크롤할 수 있게.
+과정에서 과거에서 이동한 것들은 빨간색원으로 표시하자.
+4. 실험실
+생성기능 -> 그리고 위에서 보여준 기능들 다 할 수 있어야함.
+과정을 보여주기
+
+약간의 문제점이있는데, add를 한다했을때 그안에서의 프로세스를 다 보여줄 것인지, 아니면 결과물만 과정에 보여줄 것인지.
+아니면 그 과정을 array에 담아서 마지막 index는 결과이므로 2개의 스크롤 패널에 index0 ~ 마지막까지 보여주는거 하나랑 결과만 업데이트하는 스크롤 패널 잇어도 좋을듯
+
+
+4.약간의 고민
+어떻게 구현을 할까?
+
+내가 또 코드를 작성해야할까? 그거야 하면되지만 그 코드를 올려도되나? 그것도 뭐 상관은 없으려나..아니면 코드는 비공개처리하면되지.  
+https://www.cs.usfca.edu/~galles/visualization/BST.html 이런데 참고하면 좋을듯. 굳이 코드는 보여줄 필요없이 시각화된것만 보여줘도 좋을듯.
+
+Insert, delete, find 정도만 구현할까 하지만 그건 알고리즘에 따라 다르잖아. 유기적으로 하면될듯.
+
+5. 예쁘게 페이지를 만들기 antd
+1. npm install antd 로 설치한다.
+1-1. 사용할 파일에서 import "antd/dist/antd.css"; 추가한다.
+2. https://ant.design/components/overview/ 여기서 쓸만한것들을 알아본다.
+3. 골랐다면 저기사이트에 코드보기가 있다. 그거 그대로복사해보자.
+예시는 이렇다.
+import { Layout } from 'antd';
+
+const { Header, Footer, Sider, Content } = Layout;
+
+이러고 function ASDSDF() { return ( 여기 안에 넣어본다.        <Layout>
+        <Header>Header</Header>
+        <Layout>
+          <Sider>Sider</Sider>
+          <Content>Content</Content>
+        </Layout>
+        <Footer>Footer</Footer>
+      </Layout>
+)}
+
+6. react 배운점들을 적자.
+style을 적용하는방법.
+style= { { : } } 괄호를 2개를 쓴다.. html에서는 font-size지만 리액트에선 fontSize다.
+F12 Elements에서 대충 시험해보고 VS에서 알아서 추천해준다.
+ <div style={{color:'white', fontSize:'large',fontWeight:'bold'}}>
+                뭐야
+  </div>
+
+함수를 이용해 밖에서 html code를 만들고 그것을 다시 render하여 화면에 표시하기
+
+function getList(list) {
+    let unordered = `<ul>`
+    for (var i = 0; i < list.length; i++) {
+        unordered += `<li>${list[i]}</li>`
+    }
+    unordered += `</ul>`
+    return unordered
+}
+
+
+<div dangerouslySetInnerHTML={{ __html: getList(arrays) }} />
+
+프로세스를 만들기위해서는 내가 직접 코딩을 할 필요가있다. 그것도 라이브러리를 사용하지않고, 직접 단계별로 할 필요가있다.
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+페이지를 컴포넌트로 쪼개서 다른곳에서 쓰게하기
+
+쓸 페이지에서는
+import 갖다쓸컴포넌트이름 from "./폴더있으면적든지/갖다쓸컴포넌트이름"
+해놓고 
+새로 js만들어서 맨마지막에 export default 갖다쓸컴포넌트이름 하면써짐
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+array의 크기만큼 뭐하기
+
+var menu = props.list.map((algorithmsName, i) =>
+        (<Menu.Item key={i + 1} >{algorithmsName} </Menu.Item>))
+
+
+    return (
+        <SubMenu key="sub1" icon={<UserOutlined />} title="Arrays">
+            {menu}
+        </SubMenu>
+    )
+map을해서 딱 array개수만큼만 할 수 있다...
+
+이렇게하지않고 뭐 html+= `<div></div>` 이런거는 string 을 return하기 때문에 사용하지않는걸 권장한다.
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+SubMenu를 function으로 생성할때..
+function에도 return 하는곳에 Sider, Menu, SubMenu를 주어야한다.
+
+그리고 원래 넣는곳에서도 
+Sider
+Menu
+<Function/>
+이렇게해야 submenu하나 눌렸을때 다른게 눌려지지않는다.. 
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+branch를 만들어서 하는법 
+그냥 브랜치를 만든다. 
+거따가 commit한다
+create pull request로 master에 합치는걸 요청한다.
+merge 수락한다.
+필요하다면 fetch origin
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+npm install react-router-dom@6 으로 라우터를 설치하자.
+페이지 이동하기
+ㅋㅋLink to 를  쓸라면 반드시 그 밖에 BrowserRouter같은 Router이 있어야해.. 반드시.. 같은 파일내에..
+
+  var menu = props.list.map((algorithmsName, i) =>
+    (<Menu.Item key={baseIndex + i + 1} >
+        <Link to={algorithmsName}>
+            {algorithmsName}
+        </Link>
+    </Menu.Item>))
+
+
+ <BrowserRouter>
+            <Menu
+                mode="inline"
+                style={{ height: '100%', borderRight: 0 }}
+            >
+                <GetList list={arrays} index={0} name="Arrays" />
+                <GetList list={trees} index={1} name="Trees" />
+                <GetList list={sorting} index={2} name="Sorting" />
+                <GetList list={patternMatching} index={3} name="Pattern Matching" />
+                <GetList list={graphAlgorithms} index={4} name="Graph Algorithms" />
+
+            </Menu>
+
+이렇게해야 새로고침없이 페이지를 넘나들수있어.
+
+***그런데 페이지 곳곳마다 링크들이 다른 컴포넌트에 있잖아.
+그럴땐 그냥 페이지 제일 상위에 <BrowserRouter> 설치해두고 자잘한 링크변경에 따른 컴포넌트 지정은 하위 문서들에서 <Routes>로 정하면돼. 
+홈링크같은경우에는 그냥 아무것도 안하고 그냥 to=""니까 그위에 Routes는 필요없겠지만 페이지마다 주소가할당된 menu item같은경우에는 내용을 바꾸니까 content부분에 routes를 정해놀 필요가있겠지. 
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+페이지 url 쓰는법..
+일단 Link to로 이동할때 "/:a" 이렇게 하면,
+Route path="/:id" 이렇게하고
+그걸 갖다쓸 파일에서 let {id} = useParams()로 사용할 수 있다..
+그런데, 같은 url로 route를 2번이상사용할 수 없다.. 그래서 2번이상할라면 난 switch로 쌉추하게 하는중..
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+지역변수 대신, useState
+하지만 얘는 최상위에서 쓸 수 없다.. 그래서 다른데서 쓸거면 props로 패스하든해라.
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+꽤 중요한걸알아냈다.
+javascript에서 useState가 있는데
+[a, setA()] = useState()
+이렇게 되는건 알고 있을거야.
+그런데 setA로 a의 값을 바꾸었다고 하더라도, 그 바뀐값은 다음 render까지 적용되지않음!!
+그래서 a가 undefined로 나오는 애로사항이있었는데 그럴때는 {a != undefined && <>여기안에 a가 undefined가 아닐때 보여줄코드 </>} 작성하면된다.
+<></>로 감싸주는이유는 저렇게 a!=undefined로 감싸줄때는 오로직 1개의 component만 감쌀 수 있기때문이다. 그래서 아무의미없는 <>로 감쌌다.
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+페이지 이동에따라 계속바뀌어야하는 건 url을 참고하는 urlparams를 쓰든지 아니면 그냥 지역변수같은걸로 (let) 해놓는게좋다. useState는 절대쓰면안되는게 계속 변화를 확인하고 set해야하는데 그럼 무한랜더라고 판단해서 오류가뜬다.
+useState는 버튼누를때나 할까..
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+부모로부터 import하기
+import 가져올거 from '../../가져올거'
+응용으로 부모의 자식폴더내에 있는 파일을 가져오고싶다면 '../../childFolderName/가져올거'하면됨!
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+모든 algorithm파일에 textData를 import하고 거기서 object를 만든다음 algorithmManager에 수출해서 컴포넌트에서는 algorithmManager[index].description. 이런식으로 써야한다고생각한다.
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+event가 발생했을때 특정 method를 실행시키고 싶다면
+onClick = { e=> methodName( )} 하는 방법과
+그냥 onClick = {methodName } 하는 방법이 있다. 차이점은 전자는 parameter을 추가가능하다는점.
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+array.map을 할때 [...array].reverse().map하면 역순으로 할 수 있다!
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+https://alvarotrigo.com/blog/scroll-horizontally-with-mouse-wheel-vanilla-java/ 를 참고하면 scrollable 만들 수 있다.
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+가끔 같은칸에 2개의 버튼을 연결해서 공간을 좀 줄여보자라는 생각을 하게 되는데, 저렇게 add 와 remove가 나뉜것은, enter key로써 빠르게 입력하기 위함이다. 
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+신기한거  알아냈다. 
+export fuction a(){
+  console.log(b)
+} 이런파일이 A.js 에 있고 b는 B.js에 있다고하자. B에서 import {a} from A 하면 A에는 b가없겠지만 B에있는 b를 가져다가 쓸 수 있다..
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+Arraylist에서 setProgress안에 setArraylist (state임)가 있었던이유는 setProgress를 state가지고 안함.. 그거의 복사본을만들고 그것을 업데이트한다음 그걸로 progress를 돌렸음..
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+index.js에 기본적으로 <React.StricktMode>뭐 이런거안에 <App/> 이렇게있는데 굳이 저거 없어도됨. 그냥 메인페이지로 바로가는 <MainPain/>이렇게해놔도댐. 잇으면 에러만 뜨고 딱히하는것도없음
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+onClick = {f }에서 f(a) { } 이렇게한다면 a는 무조건 event다. event를 패스하기싫으면 onClick= {e=>{ f() 이렇게 명확히 없다는걸 알려주자!
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+state값은 가끔 string 값으로 저장된다.. 또는 항상일수도.. 그래서 
+state 값이 2고 let a = 5면 state + a 하면 25가된다.. parseInt(state)하면 정신차리고 정수값으로 돌아온다..,
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+var a= 0 이면 a=='' 는 true다 ㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+var a =[undefined]       a.length = 1
+var a =[undefined, ]      a.length = 1
+var a =[undefined,3 ]      a.length = 2
+var a = [undefined, , ]   a.length = 2
+var a = [undefined,3 , ]   a.length = 2
+ㅋㅋ미쳤다;
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+key가 같으면 array에 새로운걸 push해서 넣어도 기존에 있던것을 버리고 대체가된다.. 마치 hashmap같은성질..
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+뭔가 변화를 주는 행동을 했는데, render(랜더 ,렌더)가 안된다.. 
+그럼 state을 업데이트해주자.. 업데이트내용이 별반 다른게 없으면 업데이트가 안된다.. 아니면 버튼->함수1->함수2 인데 함수2에 업데이트를 줬는데 안된다..? 그럼 함수1에서 업데이트를 해줘보자. 함수2에서만 업데이트를 하면 페이지전체가 업데이트되는게아니라 함수2만 업데이트를해주는 ㅁㅊ기능이있다..는 말을 들은적있는거같기도해
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+innerHTML 같은 기능. 테그안에 있는 content를 가져올 수 있는법
+a.props.children
+여기서 a는 < > ㅇㄴㄹㅇㄴㄹㄴㅇ</a>라한다면 a.props.children은 ㅇㄴㄹㅇㄴㄹㄴㅇ이다.
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+export let a 하면.. a를 그냥 다른데서 쓰는거다.. 그런데 Object처럼 쓰는게아니라 그냥 이값을 공유하는거임.. a값은 원래 a가 적혀있는 파일에 하나만있어. static맹키로.. 그럼 object를 만들어서 그걸 수출할려면 어떻게할까..
+export function Queue(){
+    this.head= undefined;
+    this.array= [];
+        this.pop= function(){
+        if (this.head !== undefined) {
+            let ret = this.array[this.head]
+            this.head = this.head + 1
+            return ret;
+        }
+    };
+    this.clear= function () {
+        this.head = undefined
+        this.array = []
+    };
+    this.isEmpty= function (){
+        return (this.array[this.head]===undefined)
+    };
+}
+이런식으로 Object 생성은 new Queue() 이렇게하면되는데 여기서 constructor는 function Queue()로 하는것을 볼 수 있다. 그리고 그안에 모든것을 다적어야하는데, this.로 선언하고 정의해주고 그 안의 function에서 사용한다.
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+html 2개를 더하기. 약간 += 이런걸쓰면 제대로 안되는거같아.
+그래서 let a = <> dfsdfsd</> , let b= <>sdfssaf</>한다음에 let c= <>{a} {b} </>하는게 먹히는듯
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+state를 초기화하는 변화를 줬는데 render가 안될떄.  그럴땐 ''나 []같은 값을 써라. 그냥 빈칸만해놓으면 render가 안됨.. 반대의 경우도 있으니 2개다 써보셈..
+**state가 바뀌어야하는거였음! set할떄 ('')로하든 ()로하든 전 과 다르면 업데이트를 함! 같으면 안해줭
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+array for 간지나게쓰기
+let a =[1,2,3]
+for ( let zz of a) { console.log(zz)} 
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+react 에도 javafx 나 swing맹키로 그리는기능이있다. 물론 유기적으로 어디에 뭐를 붙이고 이러는기능은아니고.. 그냥 위치를 정해줄 수 있는 기능이있는데 이마저도 원래있던 기능은아니고 페이스북에서 만들었다고한다. 그것은 react-native-web이라는데 npm install react-native 와 npm install react-native-web을 동시에 설치해야 웹에서 쓸 수있고 안드로이드는 다른거써야할듯.
+https://github.com/react-native-svg/react-native-svg#line 여기 자세히나옴
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+<>ddd </>로 이루어진 array는 바로 component처럼 쓸 수 있다.. map ㅇㅈㄹ안하고..
+-----------------------
+console.group()
+	console.log()
+console.gropuEnd() 를 통해 깔끔한 console 출력을 유도
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+마지막 배포하기.
+새로운 repository를 만든다.
+
+기존의 react프로잭트에서  npm install gh-pages --save-dev 설치
+그러고 전부 복사해서 새로운 repository 폴더에 붙여넣기..
+git init
+git add *
+git commit -m "first commit" 쌍따음표주의
+git remote add origin https://github.com/msunglim/repo이름ㅋㅋ.git
+git push -u origin main
+
+
+npm install gh-pages --save-dev 해준다 
+
+package.json에서
+"homepage": "http://msunglim.github.io/repo이름" <- scripts밖에있는거임
+
+sciprts안에는 
+ "predeploy": "npm run build",
+  "deploy": "gh-pages -d build" 적어준다.
+
+
+npm run deploy
+
+
+이러면 되는데? Settings -> Options 에서 사이트 주소를 확인할 수 있어. 
+안되면 fetch origin이라도하셈. page라는 branch에 동기화가 안되잇을 수있어.
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+컴포넌트 z index를 조절하여 layer간의 우선순위를 정할 수 있다.
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+@media only screen and (max-width: 777px) {
+    .link {
+        position: absolute;
+        left: 100px
+    }
+}
+화면크기가 777이하일때 이것을 적용한다.
+
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+position absolute는 딱 거기, fixed는 화면을 이동해도 그위치,
+position, z index, display, float등이 위치 조절하는데 요긴하게 쓰인다.
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+뭐 위에 올려놓기는 
+        z-index: 2;
+        position: sticky;
+        display: inline-table; 이정도하면됐는뎅..
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

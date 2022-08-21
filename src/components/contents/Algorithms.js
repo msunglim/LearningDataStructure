@@ -10,7 +10,7 @@ const { Title, Paragraph, Text, Link } = Typography;
 function setIndexSwitch(title) {
     let index;
     switch (title) {
-        case 'ArrayList': index = 0; break;
+        case 'DynamicArray': index = 0; break;
         case 'DoublyLinkedList': index = 1; break;
         case 'Deques': index = 2; break;
         case 'HashMaps': index = 3; break;

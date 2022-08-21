@@ -1,8 +1,8 @@
 {
   "name": "LearningDataStructure",
   "version": "0.1.0",
-  "private": true,
-  "homepage": "https://msunglim.github.io/LearningDataStructure/",
+  "private": false,
+  "homepage": "https://msunglim.github.io/LearningDataStructure",
   "dependencies": {
     "antd": "^4.19.3",
     "cra-template": "1.1.3",

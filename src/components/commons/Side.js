@@ -20,7 +20,7 @@ const { SubMenu } = Menu;
 const { Sider } = Layout;
 
 
-const arrays = ['ArrayList', 'DoublyLinkedList', 'Deques', 'HashMaps']
+const arrays = ['DynamicArray', 'DoublyLinkedList', 'Deques', 'HashMaps']
 const trees = ['BinarySearchTrees', 'Heaps', 'AVLs']
 const sorting = ['Selection Sort', 'Insertion Sort', 'Cocktail Sort', 'Merge Sort', 'Quick Sort', 'LSD Radix Sort']
 const patternMatching = ['Knuth-Morris-Pratt', 'Boyer-Moore', 'Rabin-Karp']

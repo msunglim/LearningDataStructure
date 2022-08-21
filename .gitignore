@@ -21,7 +21,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-#files that can disobey the Honor Code.
-DisjointSet.js
-DisjointSetNode.js

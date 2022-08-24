@@ -19,9 +19,9 @@
 .env.production.local
 
 #sensitive files
-/lib
-/progress
-/contents/*.js
+/src/components/contents/lib
+/src/components/contents/progress
+/src/components/contents/contents/*.js
 
 !algorithmsManager.js
 !Algorithms.js

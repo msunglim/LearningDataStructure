@@ -1,21 +1,22 @@
-What's the data structures?
 
-In computer science, a data structure is a data organization, management, and storage format that is usually chosen for efficient access to data. More precisely, a data structure is a collection of data values, the relationships among them, and the functions or operations that can be applied to the data, i.e., it is an algebraic structure about data.
+#What's the data structures?
 
-Arrays {
+##In computer science, a data structure is a data organization, management, and storage format that is usually chosen for efficient access to data. More precisely, a data structure is a collection of data values, the relationships among them, and the functions or operations that can be applied to the data, i.e., it is an algebraic structure about data.
+
+###Arrays {
 Dynamic Array,
 DoublyLinkedList,
 Deques,
 HashMaps
 }
 
-Trees {
+###Trees {
 BinaryTrees,
 Heaps,
 AVLs
 }
 
-Sorting {
+###Sorting {
 Selection Sort,
 Insertion Sort,
 Cocktail Sort,
@@ -24,13 +25,13 @@ Quick Sort,
 LSD Radix Sort
 }
 
-Pattern Matching {
+###Pattern Matching {
 Knuth-Morris-Pratt,
 Boyer-Moore,
 Rabin-Karp
 }
 
-Graph Algorithms {
+###Graph Algorithms {
 BFS,
 DFS,
 Dijkstra's,

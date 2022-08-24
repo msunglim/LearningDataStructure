@@ -18,6 +18,14 @@
 .env.test.local
 .env.production.local
 
+#sensitive files
+/lib
+/progress
+/contents/*.js
+
+!algorithmsManager.js
+!Algorithms.js
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
